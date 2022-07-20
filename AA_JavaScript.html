@@ -1,0 +1,47 @@
+<script>
+  // Prevent forms from submitting.
+  function preventFormSubmit() {
+    var forms = document.querySelectorAll('form');
+    for (var i = 0; i < forms.length; i++) {
+      forms[i].addEventListener('submit', function(event) {
+      event.preventDefault();
+      });
+    }
+  }
+  window.addEventListener('load', preventFormSubmit);    
+      
+      
+  function handleFormSubmit(formObject) {
+    toggleSubmit();
+    google.script.run.withSuccessHandler(gestionForm).processForm(formObject);
+    document.getElementById("myForm").reset();
+  }
+
+  function toggleSubmit() {
+    if(document.getElementById('submitbouton').disabled) {
+      enableSubmit();
+    }
+    else {
+      disableSubmit();
+    }
+  }
+
+  function enableSubmit() {    
+    document.getElementById("spinnerSubmit").style.visibility = 'hidden'; 
+    document.getElementById('textSubmit').innerHTML = "  Save &nbsp	&nbsp";
+    document.getElementById('submitbouton').disabled = false;
+    console.log("submit btn enabled");
+  }
+
+  function disableSubmit() {    
+    document.getElementById('submitbouton').disabled = true;
+    document.getElementById('textSubmit').innerHTML = " Processing...";
+    document.getElementById("spinnerSubmit").style.visibility = 'visible';
+    console.log("submit btn disabled");
+  }
+
+  function gestionForm(arrayResultValidation) {
+    enableSubmit();   
+  }
+
+</script>
