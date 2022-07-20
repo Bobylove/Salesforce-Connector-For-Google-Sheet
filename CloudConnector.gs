@@ -1,12 +1,9 @@
 /**
-* @author       Craig Thomas
-* @date         24/04/2014
-* @description  Google Spreadsheets Script to query Salesforce API data
-* @URL          https://github.com/tinybigideas/Google-Cloud-Connecter
+* @author       Nicolas Robert
+* @date         20/07/2022
+* @description  Google Spreadsheets Script to query Salesforce API data based on https://github.com/tinybigideas/Google-Cloud-Connecter
+* @URL          https://github.com/DarkPampers/SFDC-Connector/edit/master/CloudConnector.gs
 */
-
-// pour voir quelle version de Rest est used par notre sfdc
-// https://homefriend.lightning.force.com/services/data/
 
 var userProperties = PropertiesService.getUserProperties();
 var USERNAME_PROPERTY_NAME = "username";
