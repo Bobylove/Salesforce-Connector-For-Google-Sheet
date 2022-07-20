@@ -1,7 +1,7 @@
 /**
 * @author       Nicolas Robert
 * @date         20/07/2022
-* @description  Google Spreadsheets Script to query Salesforce API data based on https://github.com/tinybigideas/Google-Cloud-Connecter
+* @description  Google Spreadsheets Script to query Salesforce API data based on https://github.com/tinybigideas/Google-Cloud-Connecter and https://github.com/mailtoharshit/Google-Cloud-Connecter
 * @URL          https://github.com/DarkPampers/SFDC-Connector/edit/master/CloudConnector.gs
 */
 
