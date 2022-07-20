@@ -8,4 +8,5 @@ To Do :
 - render Data from query
 - if report > 2000 data then conversion to batch query
 - modal to show the query of a report
+- check english translation
 - ZE README
