@@ -9,7 +9,7 @@ function processForm(formObject){
   if(formObject.uSfdc!==""){setUsername(formObject.uSfdc);}
   if(formObject.mdpSfdc!==""){setPassword(formObject.mdpSfdc);}
   if(formObject.keySfdc!==""){setSecurityToken(formObject.keySfdc);}  
-  Browser.msgBox("Données de login mises à jour. Nouveau User : "+formObject.uSfdc)
+  Browser.msgBox("Data updated. New user : "+formObject.uSfdc)
 }
 
 //INCLUDE HTML PARTS, EG. JAVASCRIPT, CSS, OTHER HTML FILES
