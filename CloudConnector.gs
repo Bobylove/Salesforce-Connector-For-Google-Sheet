@@ -286,6 +286,46 @@ function SOQLQuery(SOQL) {
   return renderGridData(Utilities.jsonParse(results));
 };
 
+function ReportToSOQLQuery(reportId) {
+  try {
+    let results = fetch(getRestEndpoint() + "/services/data/v36.0/analytics/reports/" + reportId + "?includeDetails=true");
+    console.log("Report ID : " + reportId + " Fetched !");
+    let queryResult = JSON.parse(results);
+    let fields = queryResult.reportMetadata.detailColumns.join(",  ");
+    let table = queryResult.reportMetadata.reportType.type;
+    let dateFilter = queryResult.reportMetadata.standardDateFilter.column + " >= " + queryResult.reportMetadata.standardDateFilter.startDate + " AND " + queryResult.reportMetadata.standardDateFilter.column + " < " + queryResult.reportMetadata.standardDateFilter.endDate;
+    let filter = transfoFilter(queryResult.reportMetadata.reportFilters);
+    let requete = " SELECT  " + fields + "  FROM  " + table + "  WHERE  "  + filter + " AND " + dateFilter;
+    return requete
+  }
+  catch (e) {
+    console.log(e);
+  }
+};
+
+function transfoFilter(array) {
+  let result = "";
+  array.forEach(e => {result += e.column + " " + transfoSigne(e.operator) + " " + e.value + " AND "});
+  return result.slice(0, result.length-5);
+}
+
+function transfoSigne(string) {
+  switch (string) {
+    case 'greaterThan':
+      return ">";
+    case 'greaterOrEqual':
+      return ">=";
+    case 'lessThan':
+      return "<";
+    case 'lessOrEqual':
+      return "<=";
+    case 'equals':
+      return "=";
+    default:
+      console.log(`Sorry, we are out of ${string}.`);
+  }
+}
+
 /**
  * Get data from API
  */
